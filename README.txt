@@ -11,7 +11,7 @@ persons born on the same date and C a checksum.
 
 This module has checksum validation. Also there are two widgets and displaying
 formatters:
-  - Plain, this is just the code without anu whitespace or delimiters, the usual
+  - Plain, this is just the code without any whitespace or delimiters, the usual
   way of representing the code,
   - Formatted, the code is broken into segments: G YY MM DD SSS C.
 
