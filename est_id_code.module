@@ -7,16 +7,13 @@
  * The form is GYYMMDDSSSC, where G shows sex and century of birth
  * (odd number male, even number female, 1-2 19th century,
  * 3-4 20th century, 5-6 21st century), SSS is a serial number separating
- * persons born on the same date and C a checksum
+ * persons born on the same date and C a checksum.
  */
 
 /**
  * Implements hook_permission().
  */
 function est_id_code_permission() {
-  // Note: This would be very easy to generate programatically,
-  // but it's all typed out here for clarity.
-  // The key text is the machine name of the permission.
   $perms['view own eidcode'] = array('title' => t('View own Estonian ID code'));
   $perms['edit own eidcode'] = array('title' => t('Edit own Estonian ID code'));
   $perms['view any eidcode'] = array('title' => t('View any Estonian ID code'));
