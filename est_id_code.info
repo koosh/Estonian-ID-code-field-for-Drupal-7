@@ -1,0 +1,4 @@
+name = Estonian ID code field
+description =  * Estonian Personal identification code field.
+package = Fields
+core = 7.x
