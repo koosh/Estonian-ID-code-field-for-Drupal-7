@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * Estonian Personal identification code Field.
+ * Estonian Personal identification code (isikukood) field.
  *
  * http://en.wikipedia.org/wiki/National_identification_number#Estonia
  * The form is GYYMMDDSSSC, where G shows sex and century of birth
