@@ -11,6 +11,43 @@
  */
 
 /**
+ * Implements hook_permission().
+ */
+function est_id_code_permission() {
+  // Note: This would be very easy to generate programatically,
+  // but it's all typed out here for clarity.
+  // The key text is the machine name of the permission.
+  $perms['view own eidcode'] = array('title' => t('View own Estonian ID code'));
+  $perms['edit own eidcode'] = array('title' => t('Edit own Estonian ID code'));
+  $perms['view any eidcode'] = array('title' => t('View any Estonian ID code'));
+  $perms['edit any eidcode'] = array('title' => t('Edit any Estonian ID code'));
+
+  return $perms;
+}
+
+/**
+ * Implements hook_field_access().
+ *
+ * The tricky thing here is that a field can be attached to any type
+ * of entity, so it's not always trivial to figure out whether
+ * $account 'owns' the entity. So it's checked if entity has an "uid".
+ *
+ * @see est_id_code_permissions()
+ */
+function est_id_code_field_access($op, $field, $entity_type, $entity, $account) {
+  if ($field['type'] == 'est_id_code_field') {
+    $context = 'any';
+    if ($entity && isset($entity->uid)) {
+      if ($entity->uid == $account->uid) $context = 'own';
+    }
+    $permission = $op . ' ' . $context . ' eidcode';
+    $access = user_access($permission, $account);
+    return $access;
+  }
+  return TRUE;
+}
+
+/**
  * Implements hook_field_info().
  *
  * Provides the description of the field.
